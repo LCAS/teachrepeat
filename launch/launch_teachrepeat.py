@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from launch import LaunchDescription
 from launch_ros.actions import Node
 from launch.actions import DeclareLaunchArgument
@@ -5,6 +7,8 @@ from launch.substitutions import LaunchConfiguration
 
 
 def generate_launch_description():
+
+    ###################################### PARAMETERS ################################################################################
     return LaunchDescription([
         DeclareLaunchArgument('camera_topic', default_value='/front_camera/image_raw', description='Camera topic name'),
         DeclareLaunchArgument('lidar_topic', default_value='/front_lidar_scan', description='Lidar topic name'),
