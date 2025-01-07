@@ -1,0 +1,13 @@
+# RecordMap.action
+
+# Goal
+string output_folder
+float64 record_interval
+bool start_map
+
+---
+# Result
+bool success
+string message
+
+---

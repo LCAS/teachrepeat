@@ -1,0 +1,10 @@
+# Goal
+string output_folder
+float32 record_interval
+
+---
+# Result
+bool success
+string message
+
+---
