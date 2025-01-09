@@ -17,28 +17,42 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # 2. Set up ROS 2 Humble (using ros2/setup-ros action)
+      # 2. Set up ROS 2 Humble on the runner (manually install)
       - name: Set up ROS 2 Humble
-        uses: ros2/setup-ros@v0.1
-        with:
-          ros-distro: humble  # Set the ROS 2 distro to Humble
-
-      # 3. Install system dependencies and ROS dependencies
-      - name: Install system dependencies
         run: |
+          # Install necessary dependencies
           sudo apt update
+          sudo apt install -y curl gnupg2 lsb-release build-essential
+
+          # Add ROS 2 GPG key and repository
+          curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key | sudo tee /etc/apt/trusted.gpg.d/ros.asc
+          sudo sh -c 'echo "deb [arch=amd64] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/ros2.list'
+
+          # Install ROS 2 Humble (base desktop install)
+          sudo apt update
+          sudo apt install -y ros-humble-desktop
+
+          # Install dependencies for building packages
           sudo apt install -y python3-colcon-common-extensions python3-rosdep
 
+          # Initialize rosdep
+          sudo rosdep init
+          rosdep update
+
+          # Source the ROS 2 environment
+          echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+          source ~/.bashrc
+
+      # 3. Install ROS dependencies using rosdep
       - name: Install ROS dependencies using rosdep
         run: |
           source /opt/ros/humble/setup.bash
-          rosdep update  # Update rosdep database
-          rosdep install --from-paths src --ignore-src -r -y  # Install dependencies
+          rosdep install --from-paths src --ignore-src -r -y
 
-      # 4. Build the workspace (without tests)
+      # 4. Build the workspace
       - name: Build the workspace
         run: |
           source /opt/ros/humble/setup.bash
-          colcon build --symlink-install  # Build the ROS 2 workspace
+          colcon build --symlink-install
 
-      
+    
