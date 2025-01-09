@@ -26,6 +26,8 @@ jobs:
 
           # Add ROS 2 GPG key and repository
           curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key | sudo tee /etc/apt/trusted.gpg.d/ros.asc
+
+          # Add ROS 2 repository to apt sources list
           sudo sh -c 'echo "deb [arch=amd64] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/ros2.list'
 
           # Install ROS 2 Humble (base desktop install)
@@ -55,4 +57,4 @@ jobs:
           source /opt/ros/humble/setup.bash
           colcon build --symlink-install
 
-    
+
