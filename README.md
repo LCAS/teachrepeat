@@ -28,3 +28,19 @@ To set up **teachrepeat** in your ROS 2 workspace, follow these steps:
 ## Usage  
 
 ### GUI Control  
+
+**teachrepeat** includes a simple GUI for controlling mapping and repeating actions. To launch the GUI:  
+
+1. Source the setup.bash file and launch the ROS 2 nodes:  
+    ```bash  
+    ros2 launch teachrepeat launch_teachrepeat.py  
+    ```  
+
+2. Run the GUI script from the package directory:  
+    ```bash  
+    python3 map_gui.py  
+    ```  
+
+    This will open the GUI interface.  
+
+    ![Selection_002](https://github.com/user-attachments/assets/2f47dcd8-b0b3-4c70-85b1-8b88a1e42f31)  
