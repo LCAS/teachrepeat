@@ -20,8 +20,11 @@ jobs:
       # 2. Set up ROS 2 Humble on the runner (manually install)
       - name: Set up ROS 2 Humble
         run: |
+          # Set the locale to avoid garbled characters in output
+          sudo update-locale LANG=C.UTF-8
+
           # Install necessary dependencies
-          sudo apt update
+          sudo apt update -y
           sudo apt install -y curl gnupg2 lsb-release build-essential
 
           # Add ROS 2 GPG key and repository
@@ -31,7 +34,7 @@ jobs:
           sudo sh -c 'echo "deb [arch=amd64] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/ros2.list'
 
           # Install ROS 2 Humble (base desktop install)
-          sudo apt update
+          sudo apt update -y
           sudo apt install -y ros-humble-desktop
 
           # Install dependencies for building packages
@@ -57,4 +60,4 @@ jobs:
           source /opt/ros/humble/setup.bash
           colcon build --symlink-install
 
-
+      
