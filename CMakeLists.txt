@@ -27,8 +27,6 @@ install(
 
 install(PROGRAMS
   src/mapping.py
-  src/recorder.py
-  src/repeater.py
   src/deviation/deviation.py
   src/deviation/deviation_ros.py
   src/process/process.py
