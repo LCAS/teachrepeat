@@ -15,7 +15,7 @@ To set up **teachrepeat** in your ROS 2 workspace, follow these steps:
     git clone https://github.com/LCAS/teachrepeat.git
     cd teachrepeat  
     ```  
-    
+
 2. Install required Python dependencies:  
     ```bash  
     pip install -r requirements.txt  
@@ -25,3 +25,6 @@ To set up **teachrepeat** in your ROS 2 workspace, follow these steps:
     ```bash  
     colcon build --packages-select teachrepeat  
     ```  
+## Usage  
+
+### GUI Control  
