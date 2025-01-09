@@ -15,4 +15,13 @@ To set up **teachrepeat** in your ROS 2 workspace, follow these steps:
     git clone https://github.com/LCAS/teachrepeat.git
     cd teachrepeat  
     ```  
+    
+2. Install required Python dependencies:  
+    ```bash  
+    pip install -r requirements.txt  
+    ```  
 
+3. Navigate to your workspace and build the package:  
+    ```bash  
+    colcon build --packages-select teachrepeat  
+    ```  
