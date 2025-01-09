@@ -34,10 +34,16 @@ jobs:
       # 3. Install ROS dependencies using rosdep
       - name: Install ROS dependencies using rosdep
         run: |
-          /bin/bash -c "source /opt/ros/humble/setup.bash && rosdep init && rosdep update && rosdep install --from-paths src --ignore-src -r -y"
+          /bin/bash -c "source /opt/ros/humble/setup.bash && \
+            if [ ! -f /etc/ros/rosdep/sources.list.d/20-default.list ]; then \
+              rosdep init; \
+            fi && \
+            rosdep update && \
+            rosdep install --from-paths src --ignore-src -r -y"
 
       # 4. Build the workspace using colcon
       - name: Build the workspace
         run: |
           /bin/bash -c "source /opt/ros/humble/setup.bash && colcon build --symlink-install --parallel-workers 1"
 
+     
