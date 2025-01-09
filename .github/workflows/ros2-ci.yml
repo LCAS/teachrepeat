@@ -11,6 +11,9 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest  # Using GitHub-hosted Ubuntu runner
+    
+    container:
+      image: osrf/ros:humble-desktop  # Use ROS 2 Humble Docker container
 
     strategy:
       matrix:
@@ -22,17 +25,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # 2. Set up ROS 2 Humble in a container
-      - name: Set up ROS 2 Humble container
-        uses: docker://osrf/ros:humble-desktop  # Use ROS 2 Humble Docker container
-        with:
-          args: |
-            bash -c "apt update && apt install -y python3-vcstool python3-colcon-common-extensions python3-rosdep"
-
-      # 3. Install dependencies using rosdep
-      - name: Install dependencies using rosdep
+      # 2. Install dependencies inside the ROS 2 container
+      - name: Install dependencies
         run: |
-          source /opt/ros/humble/setup.bash
+          apt-get update
+          apt-get install -y python3-vcstool python3-colcon-common-extensions python3-rosdep
+
+      # 3. Install ROS dependencies using rosdep
+      - name: Install ROS dependencies using rosdep
+        run: |
+          source /opt/ros/humble/setup.bash  # Now this will work inside the container
           rosdep init
           rosdep update
           rosdep install --from-paths src --ignore-src -r -y
@@ -42,5 +44,3 @@ jobs:
         run: |
           source /opt/ros/humble/setup.bash
           colcon build --symlink-install --parallel-workers 1
-
-    
