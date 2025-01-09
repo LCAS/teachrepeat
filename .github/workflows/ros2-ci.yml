@@ -34,7 +34,7 @@ jobs:
       # 3. Install ROS dependencies using rosdep
       - name: Install ROS dependencies using rosdep
         run: |
-          source /opt/ros/humble/setup.bash  # Now this will work inside the container
+          source /opt/ros/humble/setup.bash  
           rosdep init
           rosdep update
           rosdep install --from-paths src --ignore-src -r -y
