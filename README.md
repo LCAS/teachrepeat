@@ -74,3 +74,11 @@ A script (`map_control.sh`) is available for mapping and repeating actions via t
     ./map_control.sh repeat_map <name> <interval>  
     ```  
     This will replay the previously recorded map.  
+
+### Important Notes  
+
+- Ensure that the relevant ROS 2 topics (e.g., `/cmd_vel`, `/odom`, `/camera/image_raw`) are correctly mapped in your launch files based on your robot’s configuration.  
+- Mapping and repeating are implemented as ROS 2 actions, allowing easy integration with other components.
+- Update `<ws>` in the `map_gui.py` to your own workspace in order to use the script.
+- This Package relies on velocity command like `cmd_vel` to record the velocities.
+- The **Plot Map** feature relies on odometry data accuracy. Even if the robot repeats the map correctly, the plot may appear inconsistent if odometry drift occurs.  
