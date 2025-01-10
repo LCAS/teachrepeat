@@ -1,5 +1,13 @@
 # Multi-Modal Teach & Repeat  
 
+
+https://github.com/user-attachments/assets/6458751d-e986-4f18-990a-2752048e8e8a
+
+
+https://github.com/user-attachments/assets/9c51d100-2016-4c7a-b179-9de327e93b12
+
+
+
 ## Overview  
 
 This package is part of the navigation stack developed for IUK Agri-OpenCore. It provides an enhanced teach-and-repeat module for robotic navigation using a multi-modal approach. RGB-D and laser data are recorded during the teaching phase and compared with real-time data to adjust the robot's alignment during the repeat phase.  
