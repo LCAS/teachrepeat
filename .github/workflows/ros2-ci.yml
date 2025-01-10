@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest  
     
     container:
-      image: osrf/ros:humble-desktop  #
+      image: osrf/ros:humble-desktop  
 
     strategy:
       matrix:
