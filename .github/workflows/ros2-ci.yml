@@ -3,21 +3,21 @@ name: ROS 2 Humble Build and Test
 on:
   push:
     branches:
-      - main  # Trigger on push to the 'main' branch (or replace with your branch)
+      - main  
   pull_request:
     branches:
-      - main  # Trigger on pull requests targeting the 'main' branch (or replace with your branch)
+      - main  
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest  # Using GitHub-hosted Ubuntu runner
+    runs-on: ubuntu-latest  
     
     container:
-      image: osrf/ros:humble-desktop  # Use ROS 2 Humble Docker container
+      image: osrf/ros:humble-desktop  #
 
     strategy:
       matrix:
-        os: [ubuntu-22.04]  # Ensure we use Ubuntu 22.04, the official OS for ROS 2 Humble
+        os: [ubuntu-22.04]  
       fail-fast: false
 
     steps:
