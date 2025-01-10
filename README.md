@@ -44,3 +44,11 @@ To set up **teachrepeat** in your ROS 2 workspace, follow these steps:
     This will open the GUI interface.  
 
     ![Selection_002](https://github.com/user-attachments/assets/2f47dcd8-b0b3-4c70-85b1-8b88a1e42f31)  
+
+3. In the GUI, enter the map name and use the following controls:  
+    - **Map Name**: Enter the desired map name during mapping, or select an existing map from the dropdown list.  
+    - **Record Interval**: Use the slider to set the data recording/comparison interval in seconds.  
+    - **Start Mapping**: Begin the mapping process and drive the robot to desired locations.  
+    - **Stop Mapping**: Save the map and stop the mapping process.  
+    - **Repeat Mapping**: Return the robot to the starting position and replay the map.  
+    - **Plot Map**: Visualize odometry data by clicking this button after repeating the map. The plot will display in a separate window.  
