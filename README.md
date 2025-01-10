@@ -52,3 +52,25 @@ To set up **teachrepeat** in your ROS 2 workspace, follow these steps:
     - **Stop Mapping**: Save the map and stop the mapping process.  
     - **Repeat Mapping**: Return the robot to the starting position and replay the map.  
     - **Plot Map**: Visualize odometry data by clicking this button after repeating the map. The plot will display in a separate window.  
+
+### Script-Based Control  
+
+A script (`map_control.sh`) is available for mapping and repeating actions via the command line.  
+
+- **Start Mapping**:  
+    ```bash  
+    ./map_control.sh start_map <name> <interval>  
+    ```  
+    Replace `<name>` with the map name and `<interval>` with the desired recording interval (in seconds). Drive the robot after initiating this command.  
+
+- **Stop Mapping**:  
+    ```bash  
+    ./map_control.sh stop_map <name> <interval>  
+    ```  
+    This will save the map and stop the mapping process.  
+
+- **Repeat a Saved Map**:  
+    ```bash  
+    ./map_control.sh repeat_map <name> <interval>  
+    ```  
+    This will replay the previously recorded map.  
